@@ -34,8 +34,8 @@ class NgxOpenresty < Formula
 
   def install
     args = [
-      "-I/usr/local/opt/openssl/include",
-      "-L/usr/local/opt/openssl/lib",
+      "--with-cc-opt='-I/usr/local/opt/openssl/include/'",
+      "--with-ld-opt='-L/usr/local/opt/openssl/lib/'",
       "--prefix=#{prefix}",
       "--with-http_ssl_module",
       "--with-pcre",
