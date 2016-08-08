@@ -33,7 +33,10 @@ class NgxOpenresty < Formula
   skip_clean 'logs'
 
   def install
-    args = ["--prefix=#{prefix}",
+    args = [
+      "-I/usr/local/opt/openssl/include",
+      "-L/usr/local/opt/openssl/lib",
+      "--prefix=#{prefix}",
       "--with-http_ssl_module",
       "--with-pcre",
       "--with-pcre-jit",
@@ -68,7 +71,7 @@ class NgxOpenresty < Formula
     args << "--with-http_postgres_module" if build.with? 'postgresql'
     args << "--with-http_iconv_module" if build.with? 'iconv'
 
-    system "./configure -I/usr/local/opt/openssl/include -L/usr/local/opt/openssl/lib", *args
+    system "./configure", *args
 
     system "make -L/usr/local/opt/openssl/lib -I/usr/local/opt/openssl/include"
     system "make install"
