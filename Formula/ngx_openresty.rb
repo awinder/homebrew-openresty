@@ -37,7 +37,6 @@ class NgxOpenresty < Formula
       "--with-http_ssl_module",
       "--with-pcre",
       "--with-pcre-jit",
-      "--with-openssl=/usr/local/opt/openssl",
       "--sbin-path=#{bin}/openresty",
       "--conf-path=#{etc}/openresty/nginx.conf",
       "--pid-path=#{var}/run/openresty.pid",
@@ -69,7 +68,7 @@ class NgxOpenresty < Formula
     args << "--with-http_postgres_module" if build.with? 'postgresql'
     args << "--with-http_iconv_module" if build.with? 'iconv'
 
-    system "./configure", *args
+    system "CPPFLAGS='-I/usr/local/opt/openssl/include' LDFLAGS='-L/usr/local/opt/openssl/lib' ./configure", *args
 
     system "make"
     system "make install"
