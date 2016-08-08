@@ -37,7 +37,7 @@ class NgxOpenresty < Formula
       "--with-http_ssl_module",
       "--with-pcre",
       "--with-pcre-jit",
-      "--with-openssl=/usr/local/opt/openssl"
+      "--with-openssl=/usr/local/opt/openssl",
       "--sbin-path=#{bin}/openresty",
       "--conf-path=#{etc}/openresty/nginx.conf",
       "--pid-path=#{var}/run/openresty.pid",
