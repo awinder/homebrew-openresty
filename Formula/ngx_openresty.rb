@@ -73,7 +73,7 @@ class NgxOpenresty < Formula
 
     system "./configure", *args
 
-    system "make -L/usr/local/opt/openssl/lib -I/usr/local/opt/openssl/include"
+    system "make"
     system "make install"
   end
 end
