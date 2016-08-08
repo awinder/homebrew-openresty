@@ -68,9 +68,9 @@ class NgxOpenresty < Formula
     args << "--with-http_postgres_module" if build.with? 'postgresql'
     args << "--with-http_iconv_module" if build.with? 'iconv'
 
-    system "CPPFLAGS='-I/usr/local/opt/openssl/include' LDFLAGS='-L/usr/local/opt/openssl/lib' ./configure", *args
+    system "./configure -I/usr/local/opt/openssl/include -L/usr/local/opt/openssl/lib", *args
 
-    system "make"
+    system "make -L/usr/local/opt/openssl/lib -I/usr/local/opt/openssl/include"
     system "make install"
   end
 end
